@@ -1,6 +1,6 @@
 // eslint-env jest
 import { fromJS } from 'immutable';
-import { denormalize, normalize, schema } from '../../';
+import { denormalize, normalize, schema } from '../src';
 
 describe(`${schema.Union.name} normalization`, () => {
   test('throws if not given a schemaAttribute', () => {

@@ -1,6 +1,8 @@
 // eslint-env jest
 import { fromJS } from 'immutable';
-import { denormalize, normalize, schema } from '../../';
+import { denormalize, normalize, schema } from '../src';
+
+type Entity = {id: number, type: string}
 
 describe(`${schema.Values.name} normalization`, () => {
   test('normalizes the values of an object with the given schema', () => {
@@ -11,7 +13,7 @@ describe(`${schema.Values.name} normalization`, () => {
         dogs: dog,
         cats: cat,
       },
-      (entity, key) => entity.type
+      (entity: Entity) => entity.type
     );
 
     expect(
@@ -33,7 +35,7 @@ describe(`${schema.Values.name} normalization`, () => {
         dogs: dog,
         cats: cat,
       },
-      (entity, key) => `${entity.type}s`
+      (entity: Entity) => `${entity.type}s`
     );
 
     expect(
@@ -56,7 +58,7 @@ describe(`${schema.Values.name} normalization`, () => {
         dogs: dog,
         cats: cat,
       },
-      (entity, key) => entity.type
+      (entity: Entity) => entity.type
     );
 
     expect(
@@ -81,7 +83,7 @@ describe(`${schema.Values.name} denormalization`, () => {
         dogs: dog,
         cats: cat,
       },
-      (entity, key) => entity.type
+      (entity: Entity) => entity.type
     );
 
     const entities = {
